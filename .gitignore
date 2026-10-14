@@ -1,0 +1,50 @@
+# Local operating-system and editor files
+.DS_Store
+._*
+.idea/
+.vscode/
+*~
+*.swp
+__pycache__/
+*.py[cod]
+
+# Credentials, machine-local configuration and private evidence
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.mobileprovision
+*.log
+*.crash
+*.ips
+*.json
+*.sqlite*
+*.db*
+*.wal
+*.shm
+*.plist
+*.entitlements
+logs/
+private/
+backups/
+evidence/
+artifacts/
+
+# Proprietary applications, installers and binary patches
+*.app/
+*.dmg
+*.pkg
+*.dylib
+*.framework/
+*.so
+*.bin
+*.patch
+*.zip
+*.tar*
+*.gz
+
+# Keep test coverage or temporary output local
+.coverage
+.pytest_cache/
+tmp/

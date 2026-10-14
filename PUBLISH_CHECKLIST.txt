@@ -1,0 +1,21 @@
+GitHub 发布前检查清单
+
+目标：Supershanyi/wechat-antirecall-macos-compatibility（Public）
+发布根目录：仅 wechat-antirecall-public，不得添加父目录或已有微信修复项目。
+
+1. 按 README 运行 Bash 语法检查、环境检查测试、隐私扫描测试和公开文件扫描。
+2. 查看 docs/READ_ONLY_REVIEW.md 和中文验证报告；检查脚本仅使用查询和验证模式。
+3. 审阅全部公开文本及 git diff --cached；只暂存扫描器精确白名单内的 10 个文件。
+4. 运行 python3 -B scripts/audit_public_files.py --staged，必须通过。
+5. 确认无个人主目录、邮箱、账号、设备标识、凭据、私人日志、截图或原始证据。
+6. 确认无微信安装包、修改后的二进制、补丁文件、聊天数据库、备份或登录态。
+7. Git 作者使用公开账号 Supershanyi 和 GitHub noreply 地址；本项目首次发布仅有一个经过审查的提交，不导入原修复仓库历史。
+8. 在以上步骤通过后，运行 gh api user --jq .login，必须精确返回 Supershanyi。
+9. 检查目标仓库。只有明确 HTTP 404 才认定名称可用；网络错误、认证失败均不等于仓库不存在。
+10. 若仓库已存在，不覆盖或强推；先确认该仓库身份、内容和权限，再单独评估后续操作。
+11. 创建 Public 仓库，添加准确 origin URL，仅推送审核过的 main 提交；不推送标签、其他分支或私有历史。
+12. 发布后核对仓库 isPrivate=false、远端 main SHA 与本地审核 SHA 相同。
+
+网络回退：如果当前执行环境无法连接 GitHub API，本地开发、验证、扫描和提交仍应完成。保持“本地完成，未发布”状态，在普通终端执行本次交付的发布命令；不得把准备好的 URL 误报为已成功发布。
+
+注意：README 中的 /path/to/your/verified/WeChat.app 是占位符。历史功能案例不是本次开发验证结果。未选择 LICENSE，不默认授予开源许可。任何扫描失败、暂存差异或测试失败都必须停止发布。
